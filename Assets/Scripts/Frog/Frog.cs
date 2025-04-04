@@ -1,22 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(FrogJump), typeof(FrogGrounding))]
 public class Frog : MonoBehaviour
 {
     private FrogJump frogJump;
     private FrogGrounding frogGrounding;
-    private Rigidbody2D rb2d;
     private InputSystem_Actions _input;
+
     void Awake()
     {
+        // Assign declared variables
         frogJump = GetComponent<FrogJump>();
         frogGrounding = GetComponent<FrogGrounding>();
-        rb2d = GetComponent<Rigidbody2D>();
         InputConfiguration();
-    }
-
-    public Rigidbody2D GetRigidbody2D()
-    {
-        return rb2d;
     }
 
     private void InputConfiguration()

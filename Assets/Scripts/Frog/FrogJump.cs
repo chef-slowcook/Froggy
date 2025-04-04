@@ -4,14 +4,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Frog))]
 public class FrogJump : MonoBehaviour
 {
+    [Header("References")]
     private Rigidbody2D rb2d;
+    [Header("Parameters")]
     [SerializeField]
     private float jumpForce = 10f;
 
     void Start()
     {
-
-        rb2d = GetComponent<Frog>().GetRigidbody2D();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     public void Jump(bool grounded)
