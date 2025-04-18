@@ -1,35 +1,28 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Frog))]
 public class FrogJump : MonoBehaviour
 {
+    [Header("References")]
     private Rigidbody2D rb2d;
-    [SerializeField]
-    private float jumpForce = 10f;
+    [Header("Parameters")]
+    [SerializeField] private float jumpForce = 10f;
 
-    void Start()
+    void Awake()
     {
-
-        rb2d = GetComponent<Frog>().GetRigidbody2D();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     public void Jump(bool grounded)
     {
         if (!grounded) return;
-        Vector3 direction = DirectionToMouse();
+        Vector3 direction = MouseAssistant.DirectionToMouse(transform);
         rb2d.AddForce(direction * jumpForce, ForceMode2D.Impulse);
     }
 
-    private Vector3 DirectionToMouse()
+    public Rigidbody2D GetRigidbody()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        mousePosition.z = 0;
-
-        Vector3 direction = (mousePosition - transform.position).normalized;
-        return direction;
+        return rb2d;
     }
-
 
 }

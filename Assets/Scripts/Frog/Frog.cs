@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(FrogJump), typeof(FrogGrounding))]
 public class Frog : MonoBehaviour
 {
+    [Header("Script References")]
+    [SerializeField] private Tongue tongue;
     private FrogJump frogJump;
     private FrogGrounding frogGrounding;
-    private Rigidbody2D rb2d;
     private InputSystem_Actions _input;
+
+
     void Awake()
     {
+        // Assign declared variables
         frogJump = GetComponent<FrogJump>();
         frogGrounding = GetComponent<FrogGrounding>();
-        rb2d = GetComponent<Rigidbody2D>();
         InputConfiguration();
-    }
-
-    public Rigidbody2D GetRigidbody2D()
-    {
-        return rb2d;
     }
 
     private void InputConfiguration()
@@ -24,8 +24,12 @@ public class Frog : MonoBehaviour
         _input = new InputSystem_Actions();
         _input.Player.Enable();
         _input.Player.Jump.performed += ctx => frogJump.Jump(frogGrounding.IsGrounded());
+        _input.Player.Attack.performed += ctx => tongue.PrepareTongue();
+        _input.Player.Attack.canceled += ctx => tongue.LaunchTongue();
     }
 
-
-
+    public Rigidbody2D GetRigidbody()
+    {
+        return frogJump.GetRigidbody();
+    }
 }

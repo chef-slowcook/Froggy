@@ -1,27 +1,34 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Frog), typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class FrogGrounding : MonoBehaviour
 {
+    [Header("Private References")]
     private Rigidbody2D rb2d;
-    Bounds bounds;
-    [SerializeField]
-    private float groundCheckDistance = 0.2f;
-    [SerializeField]
-    private LayerMask groundLayer;
-    [SerializeField]
-    private Transform rayOrigin;
+    private Bounds bounds;
+
+    [Header("Editor Parameters")]
+    [SerializeField] private Transform rayOrigin;
+    [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+
+    [Header("Raycast Cache")]
+    private Vector2 leftRayOrigin;
+    private Vector2 centerRayOrigin;
+    private Vector2 rightRayOrigin;
+    private float raySpacing;
 
     void Start()
     {
-        rb2d = GetComponent<Frog>().GetRigidbody2D();
+        rb2d = GetComponent<Rigidbody2D>();
         bounds = GetComponent<Collider2D>().bounds;
+        raySpacing = (bounds.size.x / 2) + 0.1f;
         if (rayOrigin == null) rayOrigin = transform;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == groundLayer)
         {
             Stick();
         }
@@ -33,14 +40,20 @@ public class FrogGrounding : MonoBehaviour
         rb2d.angularVelocity = 0f;
     }
 
-    //TODO: optimize by caching Vector positions
     public bool IsGrounded()
     {
-        // Create three raycast positions: left edge, center, and right edge
-        float raySpacing = (bounds.size.x / 2) + 0.1f;
-        Vector2 leftRayOrigin = new Vector2(rayOrigin.position.x - raySpacing, rayOrigin.position.y);
-        Vector2 centerRayOrigin = rayOrigin.position;
-        Vector2 rightRayOrigin = new Vector2(rayOrigin.position.x + raySpacing, rayOrigin.position.y);
+        // Update ray positions only once per check
+        float xPos = rayOrigin.position.x;
+        float yPos = rayOrigin.position.y;
+        //Center ray origin
+        centerRayOrigin.x = xPos;
+        centerRayOrigin.y = yPos;
+        //Left ray origin
+        leftRayOrigin.x = xPos - raySpacing;
+        leftRayOrigin.y = yPos;
+        //Right ray origin
+        rightRayOrigin.x = xPos + raySpacing;
+        rightRayOrigin.y = yPos;
 
         // Cast rays from all three positions
         RaycastHit2D leftHit = Physics2D.Raycast(leftRayOrigin, Vector2.down, groundCheckDistance, groundLayer);
