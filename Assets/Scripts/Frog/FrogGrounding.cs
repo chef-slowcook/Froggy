@@ -3,17 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class FrogGrounding : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Private References")]
     private Rigidbody2D rb2d;
-    Bounds bounds;
+    private Bounds bounds;
 
-    [Header("Parameters")]
-    [SerializeField]
-    private Transform rayOrigin;
-    [SerializeField]
-    private float groundCheckDistance = 0.2f;
-    [SerializeField]
-    private LayerMask groundLayer;
+    [Header("Editor Parameters")]
+    [SerializeField] private Transform rayOrigin;
+    [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
 
     [Header("Raycast Cache")]
     private Vector2 leftRayOrigin;
