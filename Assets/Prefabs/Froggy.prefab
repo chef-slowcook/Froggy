@@ -149,12 +149,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6549992192421939223}
   - component: {fileID: 5754306546266137048}
+  - component: {fileID: 7131745182511958094}
+  - component: {fileID: 4053730160504321369}
   - component: {fileID: 1842340694266546380}
-  - component: {fileID: 4175993383581566492}
   - component: {fileID: 8590796724322862425}
   - component: {fileID: 5470033079570119517}
   - component: {fileID: 847732390178946162}
-  - component: {fileID: 1003320202226267099}
+  - component: {fileID: 8714186663789797619}
   m_Layer: 8
   m_Name: Froggy
   m_TagString: Frog
@@ -234,35 +235,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1842340694266546380
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!95 &7131745182511958094
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4304398151267443951}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!61 &4175993383581566492
-BoxCollider2D:
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &4053730160504321369
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -305,8 +301,59 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.64, y: 0.64}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.29727572, y: -0.2787106}
+      - {x: 0.29919815, y: -0.18526506}
+      - {x: 0.28663784, y: 0.13755131}
+      - {x: 0.23618127, y: 0.22757864}
+      - {x: 0.20027588, y: 0.2216022}
+      - {x: 0.14929503, y: 0.17962909}
+      - {x: 0.017494291, y: 0.17840767}
+      - {x: -0.09505065, y: 0.19408083}
+      - {x: -0.12811911, y: 0.13315958}
+      - {x: -0.103309035, y: 0.07054615}
+      - {x: -0.17883378, y: 0.005396843}
+      - {x: -0.27020103, y: -0.107143}
+      - {x: -0.28805172, y: -0.2725313}
+      - {x: -0.2675884, y: -0.30366522}
+      - {x: -0.11514741, y: -0.30856085}
+      - {x: -0.06062129, y: -0.26321054}
+      - {x: -0.001516521, y: -0.2622044}
+      - {x: 0.034481853, y: -0.3159976}
+      - {x: 0.0660899, y: -0.31477857}
+      - {x: 0.12729731, y: -0.2521987}
+      - {x: 0.1585848, y: -0.25336862}
+      - {x: 0.19794856, y: -0.30413198}
+      - {x: 0.26492286, y: -0.30321127}
+  m_UseDelaunayMesh: 0
+--- !u!50 &1842340694266546380
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304398151267443951}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 3
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &8590796724322862425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb3f34a8378f2c469352a0c62035e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tongue: {fileID: 0}
+  frogJump: {fileID: 0}
+  frogGrounding: {fileID: 0}
 --- !u!114 &5470033079570119517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +399,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1003320202226267099
+--- !u!114 &8714186663789797619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,13 +408,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4304398151267443951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07808bd5595f2974bad17bcdb9e39dda, type: 3}
+  m_Script: {fileID: 11500000, guid: 5691bb7ed6335af43804d939a581124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tonguePivot: {fileID: 6478097376064748390}
-  tongueOrigin: {fileID: 0}
-  rotationSpeed: 100
-  _segmentCount: 50
 --- !u!1 &7817562586371438801
 GameObject:
   m_ObjectHideFlags: 0
