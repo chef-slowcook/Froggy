@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class FrogAnimations : MonoBehaviour
 {
     [Header("Component References")]
@@ -8,7 +9,7 @@ public class FrogAnimations : MonoBehaviour
     [SerializeField] const string FROG_IDLE = "frog_idle";
     [SerializeField] const string FROG_CHARGEJUMP = "frog_chargeJump";
     [SerializeField] const string FROG_JUMP = "frog_jump";
-    [SerializeField] const string FROGUE_TONGUESHOOT = "frog_tongueShoot";
+    [SerializeField] const string FROGUE_TONGUESHOOT = "frog_tongueShoot"; // 
     private string currentAnimation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

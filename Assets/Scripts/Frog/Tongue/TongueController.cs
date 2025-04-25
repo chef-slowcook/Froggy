@@ -2,13 +2,15 @@ using UnityEngine;
 
 //Brain class for the tongue system, responsible for launching and aiming the tongue
 [RequireComponent(typeof(TongueLaunch), typeof(TongueAim))]
-public class Tongue : MonoBehaviour
+public class TongueController : MonoBehaviour
 {
     [Header("Script References")]
     private TongueLaunch tongueLaunch;
     private TongueAim tongueAim;
+
     [Header("Transform References")]
     [SerializeField] private Transform tonguePivot;
+
     [Header("Boolean Flags")]
     private bool readyToLaunch = true;
 
@@ -33,6 +35,7 @@ public class Tongue : MonoBehaviour
         tongueLaunch.LaunchToMouse(tonguePivot);
         readyToLaunch = false;
     }
+
     public void PrepareTongue()
     {
         readyToLaunch = true;
