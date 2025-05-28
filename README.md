@@ -1,8 +1,10 @@
 # Froggy
 Game about frog parkour 🐸
 ## Controls
-**Right Click** = Jump
+- **Right Click + Hold** = Charge Jump
 
-**Left Click** = Shoot Tongue / Retract Tongue
+- **Right Click + Release** = Jump
 
-**Right Click** + **Tongue Out** = Sling
+- **Left Click** = Project Tongue
+
+- **Left Click + Release** = Retract Tongue
