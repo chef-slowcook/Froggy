@@ -1,28 +1,33 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class FrogAnimations : MonoBehaviour
+public class FrogAnimation : MonoBehaviour
 {
     [Header("Component References")]
-    Animator animator;
+    private Animator animator;
     [Header("Animation States")]
-    [SerializeField] const string FROG_IDLE = "frog_idle";
-    [SerializeField] const string FROG_CHARGEJUMP = "frog_chargeJump";
-    [SerializeField] const string FROG_JUMP = "frog_jump";
-    [SerializeField] const string FROGUE_TONGUESHOOT = "frog_tongueShoot"; // 
     private string currentAnimation;
+    public const string FROG_IDLE = "Froggy_Idle";
+    public const string FROG_CROUCH_IDLE = "Froggy_CrouchIdle";
+    public const string FROG_CROUCH = "Froggy_Crouch";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         ChangeAnimation(FROG_IDLE);
     }
 
-    void ChangeAnimation(string newAnimation)
+    public void ChangeAnimation(string newAnimation)
     {
         if (currentAnimation == newAnimation) return;
         animator.Play(newAnimation);
         currentAnimation = newAnimation;
+    }
+
+    public string GetCurrentAnimation()
+    {
+        return currentAnimation;
     }
 }

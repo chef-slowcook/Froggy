@@ -18,7 +18,7 @@ public class FrogGrounding : MonoBehaviour
     private Vector2 rightRayOrigin;
     private float raySpacing;
 
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         bounds = GetComponent<Collider2D>().bounds;
