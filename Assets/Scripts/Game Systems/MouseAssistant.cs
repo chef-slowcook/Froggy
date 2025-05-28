@@ -2,7 +2,6 @@ using UnityEngine;
 
 public static class MouseAssistant
 {
-     /// <summary>
      /// Returns the direction from origin to the mouse, normalized.
      public static Vector3 DirectionToMouse(Transform origin)
      {

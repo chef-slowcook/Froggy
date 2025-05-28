@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Script References")]
-    [SerializeField] FrogController frogController;
+    [SerializeField] Frog frog;
     private InputSystem_Actions _input;
 
     void Awake()
@@ -13,46 +13,39 @@ public class PlayerController : MonoBehaviour
         AssignInputs();
     }
 
-    //////////////////////////
-    ///// ASSIGN INPUTS
-    // 
     private void AssignInputs()
     {
         // Left Click
-        _input.Player.Attack.performed += ctx => LeftClickPerformed();
-        _input.Player.Attack.canceled += ctx => LeftClickReleased();
+        _input.Player.Attack.performed += ctx => TonguePerformed();
+        _input.Player.Attack.canceled += ctx => TongueReleased();
         // Right Click
-        _input.Player.Jump.performed += ctx => RightClickPerformed();
-        _input.Player.Jump.canceled += ctx => RightClickReleased();
+        _input.Player.Jump.performed += ctx => JumpPerformed();
+        _input.Player.Jump.canceled += ctx => JumpReleased();
     }
 
-    //////////////////////////
-    ///// INPUT HANDLERS 
-    //Left Click
-    private void LeftClickPerformed()
+    //Left click on Mouse, West-Button on Controller
+    private void TonguePerformed()
     {
-        frogController.PrepareTongue();
+        frog.TryProjectTongue();
     }
 
-    private void LeftClickReleased()
+    private void TongueReleased()
     {
-        frogController.LaunchTongue();
+        frog.TryRetractTongue();
     }
 
-    //Right Click
-    private void RightClickPerformed()
+    //Right Click on Mouse, South-Button on Controller
+    private void JumpPerformed()
     {
-        frogController.PrepareJump();
+        frog.TryChargeJump();
     }
 
-    private void RightClickReleased()
+    private void JumpReleased()
     {
-        frogController.Jump();
+        frog.TryJump();
     }
 
-    //////////////////////////
-    ///// ENABLE/DISABLE 
-    //
+    ///// ENABLE/DISABLE inputs
     private void OnEnable()
     {
         _input.Player.Enable();
@@ -62,6 +55,4 @@ public class PlayerController : MonoBehaviour
     {
         _input.Player.Disable();
     }
-
-
 }
