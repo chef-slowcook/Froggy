@@ -35,9 +35,6 @@ jobs:
         os: [buildalon-windows]
         include:
           - os: buildalon-windows
-            build-target: StandaloneWindows64
-            build-args: ''
-          - os: buildalon-windows
             build-target: WebGL
             build-args: ''
     steps:
@@ -79,10 +76,6 @@ jobs:
           name: '${{ github.run_number }}.${{ github.run_attempt }}-${{ matrix.os }}-${{ matrix.build-target }}-Artifacts'
           path: |
             ${{ github.workspace }}/**/*.log
-            ${{ env.UNITY_PROJECT_PATH }}/Builds/StandaloneWindows64/**/*.exe
-            ${{ env.UNITY_PROJECT_PATH }}/Builds/StandaloneWindows64/**/*.dll
-            ${{ env.UNITY_PROJECT_PATH }}/Builds/StandaloneWindows64/**/*_Data
-            ${{ env.UNITY_PROJECT_PATH }}/Builds/StandaloneWindows64/MonoBleedingEdge/
             ${{ env.UNITY_PROJECT_PATH }}/Builds/WebGL/
       - name: Clean Artifacts
         if: always()
@@ -100,7 +93,6 @@ jobs:
             echo "$log"
             rm -f "$log" || echo "::warning::Failed to delete log file: $log"
           done
-
           clean='${{ github.event.inputs.clean }}'
           if [ "$clean" == 'true' ]; then
             echo "Cleaning build artifacts..."
@@ -121,5 +113,4 @@ jobs:
             fi
             rm -rf "${artifacts}" || echo "::warning::Failed to delete artifacts folder: $artifacts"
           fi
-
           find "${{ env.UNITY_PROJECT_PATH }}" -type d -empty -delete || echo "::warning::Failed to delete some empty directories"
