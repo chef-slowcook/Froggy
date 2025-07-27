@@ -7,17 +7,14 @@ public class Fly : MonoBehaviour
     private FlyAnimation flyAnimation;
     private FlyMovement flyMovement;
 
-    [Header("Target")]
-    [SerializeField] private Transform pivot;
-
-    private void Start()
+    private void Awake()
     {
         //Find and assign required components
         flyAnimation = GetComponent<FlyAnimation>();
         flyMovement = GetComponent<FlyMovement>();
-        StartMoving();
     }
-    public void StartMoving()
+
+    public void StartMoving(Transform pivot)
     {
         flyMovement.StartMoving(pivot);
         flyAnimation.StartAnimation();

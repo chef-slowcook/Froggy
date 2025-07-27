@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2835259700485312040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.42, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c1409248a3a274f8a1bbba5b2a8583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivot: {fileID: 0}
 --- !u!114 &4482348905514235533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,5 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5150ce39feebf34aa083bee7629c736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.9
-  flutterRadius: 0.34
+  speed: 6.22
+  flutterRadius: 3.24
